@@ -1,0 +1,20 @@
+php_flag magic_quotes_gpc off  
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+	
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	
+	RewriteRule ^employees$ handler.php?handler=get_employees [L,QSA]
+	RewriteRule ^warehouses$ handler.php?handler=get_warehouses [L,QSA]
+	RewriteRule ^warehouse$ handlers/add_warehouse.php [L,QSA]
+	RewriteRule ^item_transfer$ handler.php?handler=transfer_item [L,QSA]
+	RewriteRule ^single_warehouse$ handler.php?handler=single_warehouse [L,QSA]
+	
+	RewriteRule ^add-warehouse$ controller/add_warehouse.php [L,QSA]
+	RewriteRule ^transfer-item$ controller/transfer_item.php [L,QSA]
+	RewriteRule ^single-warehouse$ controller/single_warehouse.php [L,QSA]
+	
+	RewriteCond %{REQUEST_FILENAME} !-f
+</IfModule>
